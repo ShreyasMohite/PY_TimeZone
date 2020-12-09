@@ -4,6 +4,7 @@ from tkinter.ttk import Combobox
 import tkinter.messagebox
 from datetime import datetime
 import pytz
+import threading
 
 
 class Timezone:
@@ -45,6 +46,11 @@ class Timezone:
                 lab_get_time.config(text=times)
             else:
                 tkinter.messagebox.showerror("Error","Please select TimeZone")
+
+
+        def realTime():
+            t=threading.Thread(target=time)
+            t.start()
             
 
 
@@ -152,7 +158,7 @@ class Timezone:
         
 
 
-        but_time=Button(firstframe,text="Time",font=('times new roman',12,'bold'),width=12,height=1,cursor="hand2",command=time)
+        but_time=Button(firstframe,text="Time",font=('times new roman',12,'bold'),width=12,height=1,cursor="hand2",command=realTime)
         but_time.place(x=30,y=65)
 
 
